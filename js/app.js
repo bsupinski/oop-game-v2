@@ -17,7 +17,10 @@ window.addEventListener("keyup", (e) => {
   const screenKeys = document.querySelectorAll(".key");
 
   if (/^[a-zA-z]$/.test(e.key)) {
-    const letter = document.getElementsByClassName(`${e.key.toLowerCase()}`);
-    console.log(letter);
+    const letter = e.key.toLowerCase();
+    screenKeys.forEach((screenKey) => {
+      if (screenKey.innerHTML.toLowerCase() === letter)
+        newGame.hadnleInteraction(screenKey);
+    });
   }
 });

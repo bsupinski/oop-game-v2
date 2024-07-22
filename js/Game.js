@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [
-      "cleve girl",
+      "clever girl",
       "ill be back",
       "my precious",
       "you had me at hello",
@@ -15,6 +15,9 @@ class Game {
     const overlay = document.querySelector("#overlay");
     const keys = document.querySelectorAll(".key");
     const heartRapper = document.querySelector("ol");
+    overlay.classList.replace("lose", "start");
+    overlay.classList.replace("win", "start");
+
     // Resets missed coutner to 0
     this.missed = 0;
     // Reset keys to default
