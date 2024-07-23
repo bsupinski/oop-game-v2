@@ -177,7 +177,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: radial-gradient(var --win);
 }
 
 .start a {

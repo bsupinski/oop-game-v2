@@ -2,11 +2,11 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [
-      "clever girl",
-      "ill be back",
-      "my precious",
-      "you had me at hello",
-      "hello world",
+      new Phrase("clever girl"),
+      new Phrase("ill be back"),
+      new Phrase("my precious"),
+      new Phrase("you had me at hello"),
+      new Phrase("hello world"),
     ];
     this.activePhrase = null;
   }
@@ -23,7 +23,7 @@ class Game {
     // Reset keys to default
     keys.forEach((key) => {
       key.disabled = false;
-      key.classList.remove("wrong");
+      key.classList.remove("wrong", "chosen");
     });
     // Reset hearts
     heartRapper.innerHTML = "";
@@ -45,15 +45,17 @@ class Game {
 
   getRandomPhrase() {
     const randomPhraseChoice = Math.floor(Math.random() * this.phrases.length);
-    this.activePhrase = new Phrase(this.phrases[randomPhraseChoice]);
+    this.activePhrase = this.phrases[randomPhraseChoice];
   }
 
-  hadnleInteraction(key) {
-    key.disabled = true;
-    this.activePhrase.checkLetter(key.innerText);
-    if (!this.activePhrase.phrase.includes(key.innerText)) {
-      key.classList.add("wrong");
+  hadnleInteraction(letter) {
+    letter.disabled = true;
+    this.activePhrase.checkLetter(letter.innerText);
+    if (!this.activePhrase.phrase.includes(letter.innerText)) {
+      letter.classList.add("wrong");
       this.removeLife();
+    } else {
+      letter.classList.add("chosen");
     }
     this.checkForWin();
   }
