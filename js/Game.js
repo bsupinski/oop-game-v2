@@ -49,6 +49,7 @@ class Game {
   }
 
   hadnleInteraction(letter) {
+    if (letter.disabled) return;
     letter.disabled = true;
     this.activePhrase.checkLetter(letter.innerText);
     if (!this.activePhrase.phrase.includes(letter.innerText)) {

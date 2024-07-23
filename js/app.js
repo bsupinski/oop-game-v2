@@ -17,7 +17,7 @@ window.addEventListener("keyup", (e) => {
   const screenKeys = document.querySelectorAll(".key");
   if (/^[a-zA-z]$/.test(e.key)) {
     const letter = e.key.toLowerCase();
-    e.key = false;
+    e.preventDefault();
     screenKeys.forEach((screenKey) => {
       if (screenKey.innerHTML.toLowerCase() === letter) {
         newGame.hadnleInteraction(screenKey);
